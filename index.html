@@ -84,26 +84,37 @@
 
         /* Tableau Embed */
         .tableau-container {
-            position: relative;
-            overflow: hidden;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            width: 100%;
+            height: 600px;
             margin: 20px 0;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            transition: box-shadow 0.5s;
-        }
-
-        .tableau-container:hover {
-            box-shadow: 0 0 20px rgba(255, 204, 51, 0.7);
+            position: relative;
+            overflow: auto;
         }
 
         .tableau-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .tableau-fallback {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 0, 0, 0.2);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tableau-fallback.show {
+            display: block;
+        }
+
+        .tableau-fallback a {
+            color: #ffcc33;
+            text-decoration: underline;
         }
 
         /* Insights Grid */
@@ -169,120 +180,4 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 { font-size: 2em; }
-            nav a { font-size: 1em; margin: 0 10px; }
-            h2 { font-size: 1.5em; }
-            .tableau-container { padding-top: 75%; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <h1>מרכז ניתוח הנתונים שלך 📊✨</h1>
-        <nav>
-            <a href="#home">בית 🏠</a>
-            <a href="#dashboard">דשבורד 📈</a>
-            <a href="#insights">תובנות 💡</a>
-            <a href="#about">אודות ℹ️</a>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Home Section -->
-        <section id="home">
-            <h2>ברוכים הבאים לעולם הנתונים שלך! 🌍</h2>
-            <p>
-                כאן תמצאו את הדשבורד המיוחד שלכם, שחושף סיפורים מרתקים על תוחלת חיים, תמ"ג ואוכלוסייה ברחבי העולם. 
-                גלו תובנות עם המון סטייל וכיף! 🚀
-            </p>
-        </section>
-
-        <!-- Dashboard Section -->
-        <section id="dashboard">
-            <h2>הדשבורד שלך 📊</h2>
-            <p>
-                זהו הלב של האתר - הדשבורד האינטראקטיבי שלך! התעמקו בנתונים, גלו קשרים בין תמ"ג לתוחלת חיים, וראו איך אוכלוסיות משפיעות על התמונה הגדולה. לחצו, גללו ותיהנו! 😎
-            </p>
-            <div class="tableau-container">
-                <iframe src="https://public.tableau.com/views/Book1_17443900069460/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" 
-                        title="הדשבורד שלך"></iframe>
-            </div>
-            <div class="cta">
-                <button onclick="scrollToInsights()">גלו תובנות נוספות! 💥</button>
-            </div>
-        </section>
-
-        <!-- Insights Section -->
-        <section id="insights">
-            <h2>תובנות מרכזיות 💡</h2>
-            <p>הנה כמה ממצאים מרתקים מהדשבורד שלך:</p>
-            <div class="insights-grid">
-                <div class="insight-card">
-                    <h3>תוחלת חיים 🌟</h3>
-                    <p>מדינות עם תמ"ג גבוה נוטות לחיות יותר, אבל יש הפתעות! 🩺</p>
-                </div>
-                <div class="insight-card">
-                    <h3>צמיחה כלכלית 📈</h3>
-                    <p>כלכלה חזקה לא תמיד מבטיחה הכל - מה הסיפור מאחורי הנתונים? 💸</p>
-                </div>
-                <div class="insight-card">
-                    <h3>כוח האוכלוסייה 🌐</h3>
-                    <p>אוכלוסיות גדולות משנות את התמונה - גלו איך! 👨‍👩‍👧‍👦</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about">
-            <h2>אודות הפרויקט ℹ️</h2>
-            <p>
-                הדשבורד הזה הוא היצירה שלך, ואנחנו כאן כדי להפוך נתונים לסיפור מרתק! 
-                עם Tableau והרבה תשוקה לניתוח, אנחנו הופכים מספרים לחוויה. יש שאלות? כתבו לנו ב-<a href="mailto:info@datahub.com" style="color: #ffcc33;">info@datahub.com</a>. 🎉
-            </p>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 מרכז ניתוח הנתונים | נבנה עם ❤️ ו-📊</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Smooth Scroll for Navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const sectionId = this.getAttribute('href');
-                document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Scroll to Insights
-        function scrollToInsights() {
-            document.querySelector('#insights').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Fade-in Animation Trigger on Scroll
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeIn 1s ease-in';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => observer.observe(section));
-
-        // Fun Dashboard Popup
-        window.onload = () => {
-            setTimeout(() => {
-                alert('ברוכים הבאים לדשבורד שלך! 🎉 לחצו וגלו סיפורים בנתונים! 😄');
-            }, 1000);
-        };
-    </script>
-</body>
-</html>
+            header h1 { font-size
