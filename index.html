@@ -1,284 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Hub 📊✨</title>
+    <title>הדשבורד שלך - מרכז ניתוח נתונים 📊✨</title>
     <style>
-        /* Reset default styles */
+        /* Reset and Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Rubik', 'Arial', sans-serif;
         }
 
-        /* Body with gradient background */
         body {
             background: linear-gradient(135deg, #6e8efb, #a777e3);
             color: #fff;
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Header styles */
+        /* Header */
         header {
             background: rgba(0, 0, 0, 0.7);
-            padding: 1.5rem;
+            padding: 20px 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(5px);
         }
 
         header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(to right, #ff6b6b, #ffec99);
+            font-size: 2.5em;
+            background: linear-gradient(to right, #ff6b6b, #ffcc33);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 2s ease-in-out;
+            background-clip: text;
+            color: transparent;
         }
 
         nav {
-            margin-top: 1rem;
+            margin-top: 10px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #ffec99;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            color: #ffcc33;
         }
 
-        /* Main content */
+        /* Main Content */
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+            margin: 20px auto;
+            padding: 0 20px;
         }
 
-        .section {
+        section {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 30px;
+            margin-bottom: 30px;
             backdrop-filter: blur(10px);
-            animation: slideUp 1s ease-out;
+            animation: fadeIn 1s ease-in;
         }
 
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #ffec99;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .section p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Tableau embed */
-        .tableau-container {
+        h2 {
+            font-size: 2em;
+            color: #ffcc33;
+            margin-bottom: 15px;
             text-align: center;
-            margin: 2rem 0;
-            animation: pulse 2s infinite ease-in-out;
         }
 
-        .tableau-container h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #ff6b6b, #a777e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        p {
+            font-size: 1.1em;
+            color: #e0e0e0;
         }
 
-        .tableau-viz {
+        /* Tableau Embed */
+        .tableau-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.5s;
+        }
+
+        .tableau-container:hover {
+            box-shadow: 0 0 20px rgba(255, 204, 51, 0.7);
+        }
+
+        .tableau-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 700px;
-            margin: 0 auto;
+            height: 100%;
+            border: none;
         }
 
-        /* Button styles */
-        .btn {
-            display: inline-block;
-            background: linear-gradient(to right, #ff6b6b, #ffec99);
-            color: #333;
-            padding: 0.8rem 1.5rem;
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .insight-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta button {
+            background: linear-gradient(to right, #ff6b6b, #ffcc33);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
             border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin: 1rem 0;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .cta button:hover {
+            transform: scale(1.1);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 20px;
             background: rgba(0, 0, 0, 0.7);
-            margin-top: 2rem;
+            margin-top: 40px;
         }
 
         footer p {
-            font-size: 1rem;
+            font-size: 1em;
+            color: #ccc;
         }
 
         /* Animations */
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideUp {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav a {
-                margin: 0 0.8rem;
-                font-size: 1rem;
-            }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .tableau-viz {
-                height: 500px;
-            }
+            header h1 { font-size: 2em; }
+            nav a { font-size: 1em; margin: 0 10px; }
+            h2 { font-size: 1.5em; }
+            .tableau-container { padding-top: 75%; }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1>Data Analytics Hub 📊✨</h1>
+        <h1>מרכז ניתוח הנתונים שלך 📊✨</h1>
         <nav>
-            <a href="#home">Home 🏠</a>
-            <a href="#tableau">Tableau Insights 📈</a>
-            <a href="#about">About Us ℹ️</a>
-            <a href="#contact">Contact 📬</a>
+            <a href="#home">בית 🏠</a>
+            <a href="#dashboard">דשבורד 📈</a>
+            <a href="#insights">תובנות 💡</a>
+            <a href="#about">אודות ℹ️</a>
         </nav>
     </header>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Welcome Section -->
-        <section id="home" class="section">
-            <h2>Welcome to Our Analytics World! 🌍</h2>
+        <!-- Home Section -->
+        <section id="home">
+            <h2>ברוכים הבאים לעולם הנתונים שלך! 🌍</h2>
             <p>
-                Dive into the exciting world of data analytics with us! 🚀 We leverage cutting-edge tools like Tableau to uncover insights that drive decisions. Explore our interactive dashboards and let the data tell its story! 📖
+                כאן תמצאו את הדשבורד המיוחד שלכם, שחושף סיפורים מרתקים על תוחלת חיים, תמ"ג ואוכלוסייה ברחבי העולם. 
+                גלו תובנות עם המון סטייל וכיף! 🚀
             </p>
-            <a href="#tableau" class="btn">Explore Tableau Dashboards 🎉</a>
         </section>
 
-        <!-- Tableau Section -->
-        <section id="tableau" class="section">
+        <!-- Dashboard Section -->
+        <section id="dashboard">
+            <h2>הדשבורד שלך 📊</h2>
+            <p>
+                זהו הלב של האתר - הדשבורד האינטראקטיבי שלך! התעמקו בנתונים, גלו קשרים בין תמ"ג לתוחלת חיים, וראו איך אוכלוסיות משפיעות על התמונה הגדולה. לחצו, גללו ותיהנו! 😎
+            </p>
             <div class="tableau-container">
-                <h2>Interactive Tableau Dashboard 📊</h2>
-                <p>
-                    Interact with our latest data visualization below to uncover trends and insights! 🕵️‍♂️ This dashboard is powered by Tableau, bringing data to life with vibrant visuals.
-                </p>
-                <!-- Embedded Tableau Visualization -->
-                <div class="tableau-viz">
-                    <div id='tableauViz'></div>
-                    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
-                    <script type='text/javascript'>
-                        window.onload = function() {
-                            var placeholderDiv = document.getElementById('tableauViz');
-                            var url = 'https://public.tableau.com/views/Book1_17443900069460/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link';
-                            var options = {
-                                width: '100%',
-                                height: '700px',
-                                hideTabs: false,
-                                hideToolbar: false,
-                                onFirstInteractive: function () {
-                                    console.log('Tableau dashboard is interactive!');
-                                }
-                            };
-                            var viz = new tableau.Viz(placeholderDiv, url, options);
-                        };
-                    </script>
+                <iframe src="https://public.tableau.com/views/Book1_17443900069460/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" 
+                        title="הדשבורד שלך"></iframe>
+            </div>
+            <div class="cta">
+                <button onclick="scrollToInsights()">גלו תובנות נוספות! 💥</button>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section id="insights">
+            <h2>תובנות מרכזיות 💡</h2>
+            <p>הנה כמה ממצאים מרתקים מהדשבורד שלך:</p>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3>תוחלת חיים 🌟</h3>
+                    <p>מדינות עם תמ"ג גבוה נוטות לחיות יותר, אבל יש הפתעות! 🩺</p>
+                </div>
+                <div class="insight-card">
+                    <h3>צמיחה כלכלית 📈</h3>
+                    <p>כלכלה חזקה לא תמיד מבטיחה הכל - מה הסיפור מאחורי הנתונים? 💸</p>
+                </div>
+                <div class="insight-card">
+                    <h3>כוח האוכלוסייה 🌐</h3>
+                    <p>אוכלוסיות גדולות משנות את התמונה - גלו איך! 👨‍👩‍👧‍👦</p>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section">
-            <h2>About Us ℹ️</h2>
+        <section id="about">
+            <h2>אודות הפרויקט ℹ️</h2>
             <p>
-                We're a passionate team of data enthusiasts dedicated to turning raw numbers into meaningful stories. 📈 Using tools like Tableau, we help businesses and individuals make data-driven decisions with confidence! 💪
+                הדשבורד הזה הוא היצירה שלך, ואנחנו כאן כדי להפוך נתונים לסיפור מרתק! 
+                עם Tableau והרבה תשוקה לניתוח, אנחנו הופכים מספרים לחוויה. יש שאלות? כתבו לנו ב-<a href="mailto:info@datahub.com" style="color: #ffcc33;">info@datahub.com</a>. 🎉
             </p>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2>Contact Us 📬</h2>
-            <p>
-                Got questions or want to collaborate on a data project? Reach out to us! We're all about connecting and creating awesome analytics experiences. 🌟
-            </p>
-            <a href="mailto:contact@datahub.com" class="btn">Get in Touch ✉️</a>
         </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Data Analytics Hub | Built with ❤️ and 📊</p>
+        <p>© 2025 מרכז ניתוח הנתונים | נבנה עם ❤️ ו-📊</p>
     </footer>
 
-    <!-- JavaScript for Scroll Animations -->
+    <!-- JavaScript -->
     <script>
-        // Add scroll animation for sections
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'slideUp 1s ease-out';
-                }
-            });
-        }, { threshold: 0.2 });
-
-        sections.forEach(section => observer.observe(section));
-
-        // Smooth scroll for navigation links
+        // Smooth Scroll for Navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                const sectionId = this.getAttribute('href');
+                document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // Scroll to Insights
+        function scrollToInsights() {
+            document.querySelector('#insights').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fade-in Animation Trigger on Scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s ease-in';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Fun Dashboard Popup
+        window.onload = () => {
+            setTimeout(() => {
+                alert('ברוכים הבאים לדשבורד שלך! 🎉 לחצו וגלו סיפורים בנתונים! 😄');
+            }, 1000);
+        };
     </script>
 </body>
 </html>
